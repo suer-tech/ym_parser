@@ -1,5 +1,3 @@
-product_id, title, characteristics, price, old_price, discount
-
 ## Как начать
 
 ### 1. Настройка Git
@@ -38,7 +36,26 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-### 8. Запуск:
+
+### 8. Создание базы данных:
+
+Создайте базу данных postgresql с именем products и колонками:
+product_id, title, price, old_price, discount, characteristics
+
+```bash
+CREATE TABLE products (
+    product_id INTEGER PRIMARY KEY,
+    title VARCHAR(255),    
+    price NUMERIC(10, 2),
+    old_price NUMERIC(10, 2),
+    discount NUMERIC(10, 2),
+	characteristics TEXT[],
+    CONSTRAINT unique_product_id UNIQUE (product_id)
+);
+```
+Настройки подключения содержатся в db_conf.py
+
+### 9. Запуск:
 
 Выполните команду для запуска:
 ```bash
